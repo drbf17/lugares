@@ -1,0 +1,11 @@
+<div class="container">
+      
+     
+    
+      
+      <places-autocomplete (onChangeLocal) ="onChangeCenter($event)"></places-autocomplete>
+      <places-filter (onFiltro) = "onChangeFilter($event)"></places-filter>
+      <section >
+        <map-view [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [lugares] ="lugares"></map-view>
+      </section>
+    </div>
