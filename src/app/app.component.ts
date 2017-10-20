@@ -100,6 +100,15 @@ private tiposPontoAtendimentoService: TiposPontoAtendimentoService){}
      window.open(this.urlBanking, "_blank");
   }
 
+  public ChangeCenterView(event){
+console.log(event);
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+
+    this.changeMap();
+
+  }
+
   
 }
 

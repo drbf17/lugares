@@ -49,13 +49,16 @@
 
 
         <div [hidden]="!showMapTab">
-          <map-view [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [lugares]="lugares"></map-view>
+          <map-view (onChangeCenterView) = "ChangeCenterView($event)" [(latitude)]="latitude" [(longitude)]="longitude" [zoom]="zoom" [lugares]="lugares"></map-view>
         </div>
 
         <div [hidden]="showMapTab" class="text-left">
           <br>
           <ul class="list-group" *ngFor="let lugar of lugares; let i = index">
-            <a class="list-group-item" style="margin-left: 0; margin-right: 0">
+            <a href = "https://www.google.com/maps/dir/?api=1&origin={{latitude}},{{longitude}}&destination={{lugar.location.lat}},{{lugar.location.lon}}"
+            target = "_blank" 
+            data-toggle="tooltip" title="Clique e veja como chegar."            
+            class="list-group-item" style="margin-left: 0; margin-right: 0">
               <div><img [src]="urlLink(lugar.tipo)" style="float : left">
                 <div style="margin-left: 5%">
                   <strong>{{i + 1}} - {{lugar.tipo}} - {{lugar.nome}}</strong>

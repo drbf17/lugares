@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Lugar } from '../share/lugar';
 import { PontosDeAtendimentoService } from '../services/pontos-de-atendimento.service'
@@ -19,6 +19,8 @@ export class MapViewComponent implements OnInit {
   public zoom: number = 12;
   @Input()
   public lugares: Lugar[];
+  @Output() 
+  public onChangeCenterView = new EventEmitter();
 
   private urlBase: string = '/assets/';
 
@@ -31,6 +33,13 @@ export class MapViewComponent implements OnInit {
   public urlLink(tipo: string): string {
     
     return this.pontosDeAtendimentoService.urlLink(tipo);
+  }
+
+  public onChangeCenter(event ){
+    console.log(event);
+    this.onChangeCenterView.emit(event);
+   
+
   }
 
 }

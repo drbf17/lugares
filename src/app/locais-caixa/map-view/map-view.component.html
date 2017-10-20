@@ -1,4 +1,4 @@
-<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" (mapClick) = "onChangeCenter($event)">
   <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
   <agm-marker *ngFor="let lugar of lugares" [title]="lugar.tipo"  [iconUrl]= "urlLink(lugar.tipo)" [latitude]="lugar.location.lat"
     [longitude]="lugar.location.lon">
@@ -15,7 +15,11 @@
             {{lugar.endereco}}
             <br> 
             {{lugar.municipio}}, {{lugar.uf}} - CEP: {{lugar.cep}}<br>
-            <strong> Telefone: </strong> {{lugar.telefone}}
+            <strong> Telefone: </strong> {{lugar.telefone}} <br>
+            <a class = "text-right" href = "https://www.google.com/maps/dir/?api=1&origin={{latitude}},{{longitude}}&destination={{lugar.location.lat}},{{lugar.location.lon}}"
+            target = "_blank" 
+            data-toggle="tooltip" title="Clique e veja como chegar."            
+            > Veja como cheagar...</a>
           </address>
 
         </div>
